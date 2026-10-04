@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+*.so
+
+# Node
+node_modules/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Secrets
+config/secure.json
+.env
+*.pem
+
+# Generated accounts (keep only source)
+data/accounts/accounts.json
+data/accounts/backups/
+
+# Logs
+*.log
+node_modules/
