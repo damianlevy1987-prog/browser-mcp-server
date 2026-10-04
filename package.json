@@ -1,27 +1,73 @@
 {
-  "name": "browser-mcp-server",
-  "version": "0.1.0",
-  "description": "MCP server for managing multiple browsers (Firefox, Chromium, Edge, Safari, Tor) in headed and headless modes",
-  "type": "module",
+  "name": "@browser-mcp/server",
+  "version": "0.2.0",
+  "description": "Advanced MCP server for browser automation with anti-detection, phone verification, proxy management, and account tracking. Supports Firefox, Chromium, Edge, Safari, Tor.",
   "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "type": "module",
   "bin": {
     "browser-mcp": "dist/index.js"
   },
   "scripts": {
     "build": "tsc",
+    "prepublishOnly": "npm run build && rm -rf node_modules && npm install --production",
+    "postinstall": "node scripts/postinstall.js",
     "start": "node dist/index.js",
     "dev": "tsx src/index.ts",
-    "install-browsers": "npx playwright install --with-deps"
+    "clean": "rm -rf dist/"
+  },
+  "files": [
+    "dist/",
+    "src/",
+    "scripts/",
+    "README.md",
+    "LICENSE"
+  ],
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "browser",
+    "automation",
+    "playwright",
+    "firefox",
+    "chromium",
+    "edge",
+    "safari",
+    "tor",
+    "anti-detection",
+    "proxy",
+    "headless",
+    "web-scraping"
+  ],
+  "author": "damianlevy1987-prog",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/damianlevy1987-prog/browser-mcp-server.git"
+  },
+  "bugs": {
+    "url": "https://github.com/damianlevy1987-prog/browser-mcp-server/issues"
+  },
+  "homepage": "https://github.com/damianlevy1987-prog/browser-mcp-server#readme",
+  "engines": {
+    "node": ">=18.0.0"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.0.0",
-    "@types/express": "^5.0.6",
-    "express": "^5.2.1",
-    "playwright": "^1.49.0",
-    "playwright-core": "^1.49.0"
+    "express": "^5.2.1"
+  },
+  "peerDependencies": {
+    "playwright": "^1.49.0"
+  },
+  "peerDependenciesMeta": {
+    "playwright": {
+      "optional": false
+    }
   },
   "devDependencies": {
+    "@types/express": "^5.0.6",
     "@types/node": "^20.11.0",
+    "playwright": "^1.49.0",
     "tsx": "^4.7.0",
     "typescript": "^5.3.0"
   }

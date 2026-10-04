@@ -1,0 +1,57 @@
+# Git
+.git
+.gitignore
+
+# Python
+*.pyc
+__pycache__/
+*.pyo
+*.egg-info/
+dist/*.egg
+build/
+.eggs/
+setup.py
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Secrets
+.env
+.env.*
+secure.json
+*.pem
+*.key
+
+# Logs
+*.log
+npm-debug.log*
+
+# Tests
+coverage/
+.nyc_output/
+
+# Docs (keep README.md though)
+docs/
+!.README.md
+*.md !README.md
+
+# Local data
+data/accounts/
+config/
+!data/names.txt
+
+# Development
+node_modules/
+tmp/
+temp/
+
+# Specific files to exclude
+public-url.txt

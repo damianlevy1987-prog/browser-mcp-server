@@ -74,16 +74,36 @@ Advanced MCP (Model Context Protocol) server for browser automation with anti-de
 
 ## Installation
 
+### Via npm (Recommended)
+
 ```bash
-# Clone the repository
+# Install globally
+npm install -g @browser-mcp/server
+
+# Or install locally in your project
+npm install @browser-mcp/server
+```
+
+After installation, install Playwright browsers:
+
+```bash
+npx playwright install firefox chromium
+```
+
+### From Source
+
+```bash
 git clone https://github.com/damianlevy1987-prog/browser-mcp-server.git
 cd browser-mcp-server
 
-# Install Python dependencies
-pip install playwright
+# Install dependencies
+npm install
+
+# Build TypeScript
+npm run build
 
 # Install Playwright browsers
-playwright install firefox chromium
+npx playwright install firefox chromium
 ```
 
 ## Usage

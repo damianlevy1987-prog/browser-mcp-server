@@ -11,9 +11,50 @@ import { accountManager } from './account-manager.js';
 import { configManager } from './config-manager.js';
 import { proxyManager } from './proxy-manager.js';
 
+// Handle CLI arguments
+const args = process.argv.slice(2);
+if (args.includes('--help') || args.includes('-h')) {
+  console.log(`
+@browser-mcp/server - Browser Automation MCP Server
+===================================================
+
+Usage:
+  browser-mcp [mode] [port]
+
+Modes:
+  sse    Start SSE server (default)
+  http   Start HTTP server with StreamableHTTP
+  stdio  Start via stdin/stdout (for MCP clients)
+  help   Show this help message
+
+Options:
+  port   Port number (default: 3100)
+  --help Show this help message
+
+Examples:
+  browser-mcp                    # Start SSE on port 3100
+  browser-mcp sse 8080          # Start SSE on port 8080
+  browser-mcp http              # Start HTTP on port 3100
+  browser-mcp --help            # Show help
+
+Endpoints:
+  GET  /health      Health check
+  POST /mcp         Streamable HTTP endpoint
+  GET  /sse         SSE connection
+  POST /messages    Legacy message endpoint
+
+Supported Browsers: Firefox, Chromium, Edge, Safari (macOS), Tor
+Launch Modes: Headed, Headless
+
+Features: Anti-detection, Phone verification, Proxy management, Account tracking
+`);
+  process.exit(0);
+}
+
 const SERVER_NAME = 'browser-mcp-server';
-const SERVER_VERSION = '0.2.0'; // Updated version for new features
-const PORT = parseInt(process.argv[2]) || 3100;
+const SERVER_VERSION = '0.2.0';
+const MODE = args[0] ?? 'sse';
+const PORT = parseInt(args[1]) || 3100;
 const HOST = '::';
 
 // Initialize managers
